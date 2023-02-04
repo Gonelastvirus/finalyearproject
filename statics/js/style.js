@@ -23,20 +23,14 @@ if (window.location.pathname === '/dashboard/') {
       else{
         document.getElementById("node"+recData.node).innerHTML ='<strong class="text-success">'+temp+'</strong>';
       }
-    dataObjNew=dataObj['data']['datasets'][x-1]['data'];//dataobjnew is created
-    dataObjNew.shift(); // switch to the the new value
-    dataObjNew.push(recData.value);//push receive value
-    dataObj['data']['datasets'][x-1]['data']=dataObjNew;// update js code entry with rec data object
-    window.myLine.update();//update graph without reloading
-    let percentage = ((recData.value / 1024) * 100).toFixed(2);
-    chart.updateSeries([percentage]);
-    Plotly.update('myDiv', {
-      value: [temp]
-    }, {
-      transition: {
-        duration: 1000
-      }
-    });
+      dataObjNew=dataObj['data']['datasets'][x-1]['data'];//dataobjnew is created
+      dataObjNew.shift(); // switch to the the new value
+      dataObjNew.push(recData.value);//push receive value
+      dataObj['data']['datasets'][x-1]['data']=dataObjNew;// update js code entry with rec data object
+      window.myLine.update();//update graph without reloading
+      let percentage = ((recData.value / 1024) * 100).toFixed(2);
+      progresschart.updateSeries([percentage]); 
+      tempchart.updateSeries([temp]);   
 };
 
 socket.onclose = function(e){
@@ -110,96 +104,110 @@ var dataObj={
   
 
   /* Progress Chart*/
-  var options = {
-    chart: {
-      height: 350,
-      type: "radialBar",
-    },
-  
-    series: [89],
-    colors: ["#20E647"],
-    plotOptions: {
-      radialBar: {
-        hollow: {
-          margin: 0,
-          size: "70%",
-          background: "#293450"
+var options1 = {
+  chart: {
+    height: 350,
+    type: "radialBar",
+  },
+
+  series: [89],
+  colors: ["#20E647"],
+  plotOptions: {
+    radialBar: {
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#293450"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
         },
-        track: {
-          dropShadow: {
-            enabled: true,
-            top: 2,
-            left: 0,
-            blur: 4,
-            opacity: 0.15
-          }
-        },
-        dataLabels: {
-          name: {
-            offsetY: -10,
-            color: "#fff",
-            fontSize: "13px"
-          },
-          value: {
-            color: "#fff",
-            fontSize: "30px",
-            show: true
-          }
+        value: {
+          color: "#fff",
+          fontSize: "30px",
+          show: true
         }
       }
-    },
-    fill: {
-      type: "gradient",
-      gradient: {
-        shade: "dark",
-        type: "vertical",
-        gradientToColors: ["#87D4F9"],
-        stops: [0, 100]
-      }
-    },
-    stroke: {
-      lineCap: "round"
-    },
-    labels: ["Soil Moisture"]
-  };
-  
-  var chart = new ApexCharts(document.querySelector("#progress_chart"), options);
-  
-  chart.render();
-  /* Progress Chart */
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#87D4F9"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ["Soil Moisture"]
+};
+var progresschart = new ApexCharts(document.querySelector("#progress_chart"), options1);
+progresschart.render();
+/* Progress Chart */
 
 /* Temperature Details */
-var data = [
-  {
-    type: "indicator",
-    mode: "gauge+number+delta",
-    value: 40,
-    delta: { reference: 50, increasing: { color: "red" } },
-    gauge: {
-      axis: { range: [null, 100], tickwidth: 1, tickcolor: "darkblue" ,tickfont: { size: 20 }},
-      bar: { color:"#05d35b" , thickness: 1 },
-      bgcolor: "white",
-      borderwidth: 2,
-      bordercolor: "gray",
-      steps: [
-        { range: [0, 100], color: "white" },
-      ],
-      threshold: {
-        line: { color: "red", width: 4 },
-        thickness: 0.75,
-        value: 50
+var options2 = {
+  chart: {
+    height: 350,
+    type: "radialBar",
+  },
+  series: [0],
+  colors: ["#20E647"],
+  plotOptions: {
+    radialBar: {
+      startAngle: -135,
+      endAngle: 135,
+      track: {
+        background: '#333',
+        startAngle: -135,
+        endAngle: 135,
+      },
+      dataLabels: {
+        name: {
+          show: true,
+          fontSize: "50px",
+          offsetY:100,
+        },
+        value: {
+          fontSize: "35px",
+          show: true
+        }
       }
     }
-  }
-];
-var layout = {
-  width: 500,
-  height: 300,
-  margin: { t: 25, r:45, l: 20, b:10 },
-  font: { color: "darkblue", family: "Arial" },
-  
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "horizontal",
+      gradientToColors: ["#87D4F9"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "butt"
+  },
+  labels: ["🌡"]
 };
-Plotly.newPlot('myDiv', data, layout);
+
+var tempchart =new ApexCharts(document.querySelector("#myDiv"), options2)
+tempchart.render();
+
 /* Temperature Details */
 }
 

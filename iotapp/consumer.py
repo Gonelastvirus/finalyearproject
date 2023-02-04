@@ -48,7 +48,7 @@ class DashConsumer(AsyncJsonWebsocketConsumer):
             pass
         else:
             print(timestamp)
-            time=str(timestamp.time())
+            time=(timestamp.strftime("%H:%M:%S"))
             # create a new SensorData model instance and save it to the database
             sensor_data = SensorData(user=user, sensor_value=val, timestamp=timestamp)
             await database_sync_to_async(sensor_data.save)()

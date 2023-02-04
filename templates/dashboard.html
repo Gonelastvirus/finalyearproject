@@ -2,12 +2,12 @@
 {% load static %}
 {% block content %}
 <!--Offcanvas End--> 
-<main class="mt-5 pt-3" style="background-color: #ffffff;">
+<main class="mt-5 pt-5" style="background-color: #ffffff;">
   <div class="container-fluid">
     <div class="row">
       <!--Creating Charts-->
       <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-6 mb-3 ">
           <div class="card custom-rounded-card h-100">
             <div class="card-header fw-bold text-center">
               <strong>Soil Moisture💧</strong> 
@@ -62,9 +62,9 @@
           </div>
         </div>
       </div>
-      <div class="row my-3">
-        <div class="col-md-6">
-          <div class="card custom-rounded-card">
+      <div class="row ">
+        <div class="col-md-6 mb-3">
+          <div class="card custom-rounded-card h-100">
             <div class="card-header fw-bold text-center">
               <strong>Temperature🌡</strong>
             </div>
@@ -73,14 +73,14 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="card custom-rounded-card mb-3">
+        <div class="col-md-3 mb-3">
+          <div class="card custom-rounded-card h-100">
             <div class="card-header fw-bold text-center text-danger">
               <strong >Sensors Details</strong> 
             </div>
             <div class="row">
               <div class="col-6 text-right">
-                  <ul class="card-text fw-bold">&nbsp; &nbsp;Node temp</ul>
+                  <ul class="card-text fw-bold">&nbsp; &nbsp;Temp</ul>
                   <p class="card-text fw-bold">&nbsp; &nbsp;Node 1:&nbsp;<span class="d-inline fw-bold" id="node1"></span></p>
                   <p class="card-text fw-bold">&nbsp; &nbsp;Node 2:&nbsp;<span class="d-inline fw-bold" id="node2"></span></p>
                   <p class="card-text fw-bold">&nbsp; &nbsp;Node 3:&nbsp;<span class="d-inline fw-bold" id="node3"></span></p>
@@ -88,7 +88,7 @@
                   <p class="card-text fw-bold">&nbsp; &nbsp;Node 5:&nbsp;<span class="d-inline fw-bold" id="node5"></span></p>
                 </div>
               <div class="col-6 text-left">
-                <p class="card-text fw-bold text-right">&nbsp; &nbsp;Time</p>
+                <ul class="card-text fw-bold">&nbsp; &nbsp;Time</ul>
                   <p class="card-text fw-bold">&nbsp; &nbsp;<strong id="node1time"></strong></p>
                   <p class="card-text fw-bold">&nbsp; &nbsp;<strong id="node2time"></strong></p>
                   <p class="card-text fw-bold">&nbsp; &nbsp;<strong id="node3time"></strong></p>

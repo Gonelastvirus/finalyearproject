@@ -1,6 +1,6 @@
 :root {
     --offcanvas-width: 270px;
-    --topNavbarHeight: 56px;
+    --topNavbarHeight: 54px;
 }
 
 .sidebar-nav {
@@ -92,6 +92,7 @@ form {
   .edit-icon {
     cursor: pointer;
   }
+  
   @media (max-width: 768px) {
     form {
       width: 90%;
@@ -100,7 +101,6 @@ form {
       position: relative;
       top: 1rem;
     }
-    
     .form-group {
       flex-direction: column;
     }
