@@ -6,7 +6,7 @@ import time
 ws=websocket.WebSocket()
 # Replace with your user's token
 TOKEN = '30:C6:F7:1F:BB:7B'
-url = 'ws://127.0.0.1:8000/dashboard?token='+TOKEN
+url = 'ws://${window.location.hostname}:8000/dashboard?token='+TOKEN
 # Connecting to the server and handle connection errors
 connected = False
 while not connected:
