@@ -16,9 +16,9 @@ from channels.routing import ProtocolTypeRouter,URLRouter
 from channels.auth import AuthMiddlewareStack
 from iotag.middlewaretokenauth import CustomUserAuthMiddleware
 from django.urls import path
-from iotapp import consumer
+from iotapp.consumer import DashConsumer
 websocket_urlPattern=[
-    path('dashboard',consumer.DashConsumer.as_asgi()),
+    path('dashboard',DashConsumer.as_asgi()),
 ]
 application=ProtocolTypeRouter({
     # 'http':

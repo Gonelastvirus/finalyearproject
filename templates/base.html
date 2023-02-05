@@ -27,12 +27,11 @@ let token = ('{{ token }}').toString();
 </button>
 <!--Offcanvas Trigger-->
 <a class="navbar-brand me-auto fw-bold text-uppercase" href="{%url 'dashboard'%}">SM-328</a>
-
 <li class="nav-item dropdown">
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 <i class="bi bi-person-fill"></i>
 </a>
-<ul class="dropdown-menu dropdown-menu-end my-2" aria-labelledby="navbarDropdown">
+<ul class="dropdown-menu dropdown-menu-end my-1" aria-labelledby="navbarDropdown">
 <li><a class="dropdown-item" href="{%url 'logout'%}">Logout</a></li>
 <li><a class="dropdown-item" href="{% url 'settings' %}">Settings</a></li>
 <li><hr class="dropdown-divider"></li>
