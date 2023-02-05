@@ -166,7 +166,7 @@ var options2 = {
     height: 350,
     type: "radialBar",
   },
-  series: [60],
+  series: [90],
   colors: ["#20E647"],
   plotOptions: {
     radialBar: {
