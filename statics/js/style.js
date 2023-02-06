@@ -166,7 +166,7 @@ var options2 = {
     height: 350,
     type: "radialBar",
   },
-  series: [90],
+  series: [0],
   colors: ["#20E647"],
   plotOptions: {
     radialBar: {
@@ -185,7 +185,10 @@ var options2 = {
         },
         value: {
           fontSize: "35px",
-          show: true
+          show: true,
+          formatter: function(val) {
+            return val + " °C";
+          }
         }
       }
     }
