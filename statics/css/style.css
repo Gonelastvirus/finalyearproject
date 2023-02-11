@@ -1,6 +1,6 @@
 :root {
     --offcanvas-width: 270px;
-    --topNavbarHeight: 54px;
+    --topNavbarHeight: 50px;
 }
 
 .sidebar-nav {
@@ -37,7 +37,19 @@
         height: calc(100% - var(--topNavbarHeight));
     }
 }
-
+.lastact{
+  text-decoration: none;
+  color:black;
+  border: 1px solid blue;
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px blue;
+  margin-right:15px;
+}
+.lastact:hover {
+  color: red;
+  border-color: red;
+  box-shadow: 0px 0px 10px red;
+}
 .custom-rounded-card {
     border-radius: 10px;
   }
@@ -45,80 +57,85 @@
 .container{
   padding-top: 5rem;
 }
+.thead-fixed {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  background-color: #fff;
+}
 form {
-    width: 50%;
-    margin: 0 auto;
-    text-align: left;
-    padding: 2rem;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #00000033;
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
+  padding: 2rem;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00000033;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  width: 25%;
+  font-weight: 600;
+  text-align: right;
+  padding-right: 1rem;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 60%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #ffffff;
+}
+
+.edit-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: #00000033;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+.edit-icon {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  form {
+    width: 90%;
   }
-  
+  .edit-icon {
+    position: relative;
+    top: 1rem;
+  }
   .form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.5rem;
+    flex-direction: column;
   }
   
+  #butt{
+    padding-top: 1rem;
+  }
   label {
-    width: 25%;
-    font-weight: 600;
-    text-align: right;
-    padding-right: 1rem;
+    width: 100%;
+    text-align: left;
+    padding-right: 0;
+    margin-bottom: 1rem;
   }
   
   input[type="text"],
   input[type="email"] {
-    width: 60%;
-    padding: 0.5rem;
-    border-radius: 5px;
-    border: none;
-    background-color: #ffffff;
+    width: 100%;
   }
   
-  .edit-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 2rem;
-    width: 2rem;
-    border-radius: 50%;
-    background-color: #00000033;
-    color: #fff;
-    cursor: pointer;
-    margin-left: 1rem;
-  }
-  .edit-icon {
-    cursor: pointer;
-  }
-  
-  @media (max-width: 768px) {
-    form {
-      width: 90%;
-    }
-    .edit-icon {
-      position: relative;
-      top: 1rem;
-    }
-    .form-group {
-      flex-direction: column;
-    }
-    
-    #butt{
-      padding-top: 1rem;
-    }
-    label {
-      width: 100%;
-      text-align: left;
-      padding-right: 0;
-      margin-bottom: 1rem;
-    }
-    
-    input[type="text"],
-    input[type="email"] {
-      width: 100%;
-    }
-    
-  }
-  
+}

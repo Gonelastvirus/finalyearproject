@@ -1,10 +1,9 @@
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login
 from django.shortcuts import render,redirect
-# Create your views here.
+from django.utils import timezone
 from iotapp.models import CustomUser
 from django.contrib.auth.models import User,auth
-from .models import Vegetable
+from .models import Vegetable,SensorData
+# Create your views here.
 def dashboard(request):
     if not request.user.is_authenticated:
         return render(request,'permission_denied.html')
@@ -17,6 +16,15 @@ def dashboard(request):
         return redirect('/admin')
 def permission_denied(request):
     return render(request,"permission_denied.html")
+def recentactivity(request):
+    interval = request.GET.get('interval')
+    if interval:
+        interval = int(interval)
+        now = timezone.now()
+        data = SensorData.objects.filter(timestamp__gte=now-timezone.timedelta(minutes=interval), user_id=request.user.id)
+    else:
+        data = []
+    return render(request,"recentactivity.html",{'data': data})
 def soiltempdata(request):
     vegetables = Vegetable.objects.all()
     return render(request,"soiltemperature.html",{'vegetables': vegetables})

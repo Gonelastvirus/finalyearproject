@@ -23,7 +23,6 @@ while(True):
     # Parse the serial data as a JSON string
     try:
         serial_data_dict = json.loads(serial_data)
-        print(serial_data_dict)
         # Extract the values you need from the serial data
         value = serial_data_dict['hum']
         node = serial_data_dict['node']
@@ -31,6 +30,7 @@ while(True):
         message = {'value': int(value), 'node': int(node),'temp': int(temp)}
         message_str = json.dumps(message)
         ws.send(message_str)
+        print(message_str)
         time.sleep(1)
     except:
         print(serial_data)

@@ -24,6 +24,7 @@ urlpatterns = [
     path('dashboard/',views.dashboard,name='dashboard'),
     path('settings/',views.settings,name='settings'),
     path('soiltempdata/',views.soiltempdata,name='soiltempdata'),
+     path('recentactivity/',views.recentactivity,name='recentactivity'),
     path("permission_denied/",views.permission_denied,name="permission_denied"),
 ]
 urlpatterns += staticfiles_urlpatterns()

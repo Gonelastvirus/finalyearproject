@@ -6,7 +6,7 @@ if (window.location.pathname === '/dashboard/') {
   url.search = searchParams.toString();
   let socket =new WebSocket(url);
   socket.onopen =function(e){
-      alert('Connection open');
+    alert('Connection open');
   };
   socket.onmessage = function(e){
     console.log(e.data);
@@ -14,14 +14,25 @@ if (window.location.pathname === '/dashboard/') {
     document.getElementById("doggy").innerHTML =threshold;
     var recData=JSON.parse(e.data); //parse json data
     var x=Number(recData.node)
+    if(x){
+      document.getElementById("nodes"+recData.node).innerHTML ='<i class="fas fa-circle text-success"></i>';
+    }
     var temp=Number(recData.temp)
       document.getElementById("sex").innerHTML =recData.value;
       document.getElementById("node"+recData.node+"time").innerHTML =recData.time;
+      if (recData.value>threshold){
+        document.getElementById("moisalt").innerHTML ='<i class="bi bi-arrow-down-circle-fill text-danger"></i>'; 
+      }
+      else{
+        document.getElementById("moisalt").innerHTML ='<i class="bi bi-arrow-up-circle-fill text-success"></i>';
+      }
       if (temp>50){
       document.getElementById("node"+recData.node).innerHTML ='<strong class="text-danger">'+temp+'</strong>';
+      document.getElementById("tempalt").innerHTML ='<i class="bi bi-arrow-down-circle-fill text-danger"></i>'; 
       }
       else{
         document.getElementById("node"+recData.node).innerHTML ='<strong class="text-success">'+temp+'</strong>';
+        document.getElementById("tempalt").innerHTML ='<i class="bi bi-arrow-up-circle-fill text-success"></i>';
       }
       dataObjNew=dataObj['data']['datasets'][x-1]['data'];//dataobjnew is created
       dataObjNew.shift(); // switch to the the new value
@@ -110,7 +121,7 @@ var options1 = {
     type: "radialBar",
   },
 
-  series: [89],
+  series: [69],
   colors: ["#20E647"],
   plotOptions: {
     radialBar: {
@@ -163,10 +174,10 @@ progresschart.render();
 /* Temperature Details */
 var options2 = {
   chart: {
-    height: 350,
+    height: 330,
     type: "radialBar",
   },
-  series: [0],
+  series: [70],
   colors: ["#20E647"],
   plotOptions: {
     radialBar: {
@@ -187,7 +198,7 @@ var options2 = {
           fontSize: "35px",
           show: true,
           formatter: function(val) {
-            return val + " °C";
+            return val + "°C";
           }
         }
       }
