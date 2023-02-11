@@ -1,6 +1,7 @@
 # RealTime Field monitoring system.
 The main aim of this project to measure quality of soil using different sensor like soil moisture sensor, temperature and NPK(Nitrogen, Phosporous and potassium) sensor.
 The data can be monitor in realtime and data are store in database.
+I  use Djnago Channel framework for using sockets so that thing look realtime. Go here: https://channels.readthedocs.io/en/stable/
 
 ## Login Page of System
 ![Screenshot from 2023-02-11 20-43-31](https://user-images.githubusercontent.com/67478827/218267537-692a713c-c764-479b-a605-a218e8d1b27d.png)
